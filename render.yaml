@@ -1,0 +1,17 @@
+# Free deployment: Render free web service + free Neon Postgres (DATABASE_URL)
+services:
+  - type: web
+    name: concern-desk
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 22.14.0
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL     # paste your Neon connection string in the Render dashboard; never commit it
+        sync: false
+      - key: SEED_PASSWORD    # password for the demo accounts; never commit it
+        sync: false
